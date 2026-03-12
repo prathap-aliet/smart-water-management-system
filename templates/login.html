@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Water Management Login</title>
+
+    <!DOCTYPE html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* BACKGROUND VIDEO (ZOOM REDUCED) */
+    #bg-video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+    }
+
+    .login-container {
+        background-image: linear-gradient(to bottom right, #43cea2, #185a9d);
+        padding: 40px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        width: 350px;
+        text-align: center;
+        color: white;
+    }
+
+    .login-container h2 {
+        margin-bottom: 20px;
+    }
+
+    .login-container input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    .login-container button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #00ffcc;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .login-container button:hover {
+        background: #00cc99;
+        transform: scale(1.05);
+    }
+
+    .error {
+        color: yellow;
+        margin-bottom: 10px;
+    }
+
+    .footer {
+        margin-top: 15px;
+        font-size: 13px;
+        opacity: 0.8;
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<!-- BACKGROUND VIDEO -->
+
+<video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='waterfallT.mp4') }}" type="video/mp4">
+</video>
+
+<div class="login-container">
+    <h2>💧 Smart Water Management</h2>
+    <p>Secure System Login</p>
+
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="POST">
+    <input type="text" name="username" placeholder="Enter Username" required>
+    <input type="password" name="password" placeholder="Enter Password" required>
+    <button type="submit">Login</button>
+</form>
+
+<div class="footer">
+    © 2026 Water Monitoring System
+</div>
+
+
+</div>
+
+</body>
+</html>

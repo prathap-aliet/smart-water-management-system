@@ -1,0 +1,65 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f2f9ff;
+}
+
+.login-box {
+    width: 320px;
+    margin: 150px auto;
+    padding: 20px;
+    background: white;
+    text-align: center;
+    box-shadow: 0 0 15px #ccc;
+    border-radius: 10px;
+}
+
+.login-box input {
+    width: 90%;
+    padding: 8px;
+    margin: 10px 0;
+}
+
+.login-box button {
+    padding: 8px 20px;
+    background: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.navbar {
+    background: #0077b6;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10px;
+}
+
+.alert {
+    background: red;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 20px;
+}
+
+.chart-container {
+    width: 70%;
+    margin: auto;
+}

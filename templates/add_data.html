@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Water Data</title>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Add Water Data</title>
+
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* 🌊 BLINKING WATER BACKGROUND */
+    body::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        animation: waterBlink 10s infinite;
+        z-index: -2;
+    }
+
+    /* Background Image Switching */
+    @keyframes waterBlink {
+
+        0%{
+            background-image: url("/static/sea.jpg");
+            }
+
+        50%{
+            background-image: url("/static/river.jpg");
+          
+        }
+
+        100%{
+            background-image: url("/static/waterfall.jpg");
+        }
+    }
+
+    /* Blue overlay for readability */
+    body::after {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        opacity:0.7;
+        z-index:-1;
+    }
+
+    .form-container {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 40px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        width: 400px;
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0 15px 0;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+    }
+
+    input {
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    select {
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #00ffcc;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #00cc99;
+        transform: scale(1.05);
+    }
+
+    .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .back-link:hover {
+        color: #00ffcc;
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>💧 Add Water Data</h2>
+
+<form method="POST">
+
+    <label>Water Level (%)</label>
+    <input type="number" name="level" required>
+
+    <label>Usage (Litres)</label>
+    <input type="number" name="usage" required>
+
+    <label>Quality</label>
+    <select name="quality">
+        <option>Good</option>
+        <option>Moderate</option>
+        <option>Poor</option>
+    </select>
+
+    <button type="submit">Save Data</button>
+</form>
+
+<a class="back-link" href="/dashboard">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

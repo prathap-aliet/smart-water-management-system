@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Water Dashboard</title>
+
+   <!DOCTYPE html>
+
+<html>
+<head>
+    <title>Smart Water Dashboard</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+    }
+
+    /* BACKGROUND VIDEO */
+    #bg-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .header {
+        padding: 20px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .nav {
+        text-align: center;
+        margin: 15px;
+    }
+
+    .nav a {
+        text-decoration: none;
+        color: white;
+        background: #00c6ff;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 8px;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .nav a:hover {
+        background: #00ffcc;
+        color: black;
+        transform: scale(1.05);
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 20px;
+    }
+
+    .card {
+        background: white;
+        color: black;
+        width: 250px;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+    }
+
+    .card h2 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    .card.blue { background: #00c6ff; color: white; }
+    .card.green { background: #28a745; color: white; }
+    .card.orange { background: #ff9800; color: white; }
+
+    .table-container {
+        background: rgba(255,255,255,0.95);
+        color: black;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table th {
+        background: #2a5298;
+        color: white;
+        padding: 10px;
+    }
+
+    table td {
+        padding: 8px;
+        text-align: center;
+    }
+
+    table tr:nth-child(even) {
+        background: #f2f2f2;
+    }
+
+    table tr:hover {
+        background: #d1ecf1;
+    }
+
+    .delete-btn {
+        text-decoration: none;
+        color: white;
+        background: red;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .delete-btn:hover {
+        background: darkred;
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- BACKGROUND VIDEO -->
+
+<video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='waterO.mp4') }}" type="video/mp4">
+</video>
+
+<div class="header">
+    💧 Smart Water Management Dashboard
+</div>
+
+<div class="nav">
+    <a href="/add">Add Data</a>
+    <a href="/graph" target="_blank">View Graph</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="cards">
+    <div class="card blue">
+        <h3>Total Records</h3>
+        <h2>{{ data|length }}</h2>
+    </div>
+
+```
+<div class="card green">
+    <h3>Latest Water Level</h3>
+    <h2>
+        {% if data %}
+            {{ data[-1][1] }}%
+        {% else %}
+            0%
+        {% endif %}
+    </h2>
+</div>
+
+<div class="card orange">
+    <h3>Latest Usage</h3>
+    <h2>
+        {% if data %}
+            {{ data[-1][2] }} L
+        {% else %}
+            0 L
+        {% endif %}
+    </h2>
+</div>
+```
+
+</div>
+
+<div class="table-container">
+    <h2>Water Data Records</h2>
+    <table border="0">
+        <tr>
+            <th>ID</th>
+            <th>Water Level (%)</th>
+            <th>Usage (Litres)</th>
+            <th>Quality</th>
+            <th>Action</th>
+        </tr>
+
+```
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>
+            <a class="delete-btn" href="/delete/{{ row[0] }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+</body>
+</html> 

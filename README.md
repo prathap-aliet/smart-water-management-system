@@ -1,1 +1,1 @@
-# smart-water-management-system
+# Water-Quality
